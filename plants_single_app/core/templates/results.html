@@ -1,0 +1,69 @@
+{% load static %}
+{% include 'header.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diagnosis Result</title>
+</head>
+<body>
+
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home" id="home">
+           
+            <div class="home__container container grid">
+                <h1 class="text-center mb-4">Disease Prediction Results:</h1>
+                <p>{{ diagnosis }}</p>
+    
+            </div>
+   
+    <section class="questions section" id="faqs">
+        <h2 class="section__title-center questions__title container">
+            Some common questions <br> were often asked
+        </h2>
+    
+        <div class="questions__container container grid">
+            {% for group in faq_groups %}
+                <div class="questions__group">
+                    {% for item in group.faq_items.all %}
+                        <div class="questions__item">
+                            <header class="questions__header">
+                                <i class="ri-add-line questions__icon"></i>
+                                <h3 class="questions__item-title">{{ item.question }}</h3>
+                            </header>
+    
+                            <div class="questions__content">
+                                <p class="questions__description">
+                                    {{ item.answer }}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>
+<!--==================== FOOTER ====================-->
+<footer class="footer section">
+    <div class="footer__container container grid">
+       
+    </div>
+
+    <p class="footer__copy">&#169; powered by plantvillage dataset</p>
+</footer>
+
+<!--=============== SCROLL UP ===============-->
+<a href="#" class="scrollup" id="scroll-up"> 
+    <i class="ri-arrow-up-fill scrollup__icon"></i>
+</a>
+
+<!--=============== SCROLL REVEAL ===============-->
+<script src="{% static 'assets/js/scrollreveal.min.js' %}"></script>
+
+<!--=============== MAIN JS ===============-->
+<script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+</html>

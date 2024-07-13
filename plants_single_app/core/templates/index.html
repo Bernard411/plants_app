@@ -1,0 +1,184 @@
+{% load static %}
+{% include 'header.html' %}
+
+        <main class="main">
+            <!--==================== HOME ====================-->
+            <section class="home" id="home">
+                <div class="home__container container grid">
+                    <img src="{% static 'assets/img/home.png' %}" alt="" class="home__img">
+
+                    <div class="home__data">
+                        <h1 class="home__title" style="text-transform: lowercase;">
+                         SINGLE ACCESS KEY APP FOR PLANT <br> DISEASES IDENTIFICATION
+
+                        </h1>
+                        <p class="home__description">
+                            Create incredible plant design for your offices or apastaments. 
+                            Add fresness to your new ideas.
+                        </p>
+                        <a href="{% url 'scan' %}" class="button button--flex">
+                           use computer vision to identify desease <i class="ri-arrow-right-down-line button__icon"></i>
+                        </a>
+                    </div>
+
+                    <div class="home__social">
+                        <span class="home__social-follow">Follow Us</span>
+
+                        <div class="home__social-links">
+                            <a href="https://www.facebook.com/" target="_blank" class="home__social-link">
+                                <i class="ri-facebook-fill"></i>
+                            </a>
+                            <a href="https://www.instagram.com/" target="_blank" class="home__social-link">
+                                <i class="ri-instagram-line"></i>
+                            </a>
+                            <a href="https://twitter.com/" target="_blank" class="home__social-link">
+                                <i class="ri-twitter-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--==================== ABOUT ====================-->
+            <section class="about section container" id="about">
+                <div class="about__container grid">
+                    <img src="{% static 'assets/img/about.png' %}" alt="" class="about__img">
+            
+                    <div class="about__data">
+                        <h2 class="section__title about__title">
+                            Who we really are & <br> why choose us
+                        </h2>
+            
+                        <p class="about__description">
+                            Our plant disease detection system is built for efficiency and accuracy, utilizing the extensive PlantVillage dataset. This dataset, containing over 50,000 images of healthy and diseased plants, enables our AI to diagnose plant conditions with high precision. By leveraging this data, our system ensures rapid identification of issues, helping you take timely action to protect your plants.
+                        </p>
+                        <a href="{% url 'entity' %}" class="button button--flex">
+                            fill form to identify desease <i class="ri-arrow-right-down-line button__icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!--==================== STEPS ====================-->
+            <section class="steps section container">
+                <div class="steps__bg">
+                    <h2 class="section__title-center steps__title">
+                        Steps for<br> plant detection
+                    </h2>
+            
+                    <div class="steps__container grid">
+                        <div class="steps__card">
+                            <div class="steps__card-number">01</div>
+                            <h3 class="steps__card-title">Capture plant leaf</h3>
+                            <p class="steps__card-description">
+                                Take a clear photo of the plant leaf you want to analyze.
+                            </p>
+                        </div>
+            
+                        <div class="steps__card">
+                            <div class="steps__card-number">02</div>
+                            <h3 class="steps__card-title">Upload picture</h3>
+                            <p class="steps__card-description">
+                                Upload the captured image to our platform for analysis.
+                            </p>
+                        </div>
+            
+                        <div class="steps__card">
+                            <div class="steps__card-number">03</div>
+                            <h3 class="steps__card-title">Analyze picture</h3>
+                            <p class="steps__card-description">
+                                Our system will analyze the uploaded image to detect any issues.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+
+            <!--==================== PRODUCTS ====================-->
+            <section class="product section container" id="products">
+                <h2 class="section__title-center">
+                    deseases and  <br> treatment
+                </h2>
+
+                <p class="product__description">
+                    Here are some selected plants from our showroom, all are in excellent 
+                    shape and has a long life span. Buy and enjoy best quality.
+                </p>
+
+                <div class="product__container grid">
+                    {% for plants in plants  %}
+                    <article class="product__card">
+                        <div class="product__circle"></div>
+                        <a href="{% url 'view_plant' plants.id %}">
+                        <img src="{{plants.image}}" alt="" class="product__img" style="width: 120px; height: 100px;">
+                        </a>
+
+                        <h3 class="product__title" style="margin-top: 30px;">Disease</h3>
+                        <span class="product__price">{{plants.name}}</span>
+
+                        <button class="button--flex product__button">
+                            <i class="ri-plant-line"></i>
+                        </button>
+                    </article>
+                    {% endfor %}
+
+                    
+                </div>
+            </section>
+
+            <!--==================== QUESTIONS ====================-->
+       <!-- faq.html -->
+<section class="questions section" id="faqs">
+    <h2 class="section__title-center questions__title container">
+        Some common questions <br> were often asked
+    </h2>
+
+    <div class="questions__container container grid">
+        {% for group in faq_groups %}
+            <div class="questions__group">
+                {% for item in group.faq_items.all %}
+                    <div class="questions__item">
+                        <header class="questions__header">
+                            <i class="ri-add-line questions__icon"></i>
+                            <h3 class="questions__item-title">{{ item.question }}</h3>
+                        </header>
+
+                        <div class="questions__content">
+                            <p class="questions__description">
+                                {{ item.answer }}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+            <!--==================== CONTACT ====================-->
+            
+        </main>
+
+        <!--==================== FOOTER ====================-->
+        <footer class="footer section">
+            <div class="footer__container container grid">
+               
+            </div>
+
+            <p class="footer__copy">&#169; powered by plantvillage dataset</p>
+        </footer>
+        
+        <!--=============== SCROLL UP ===============-->
+        <a href="#" class="scrollup" id="scroll-up"> 
+            <i class="ri-arrow-up-fill scrollup__icon"></i>
+        </a>
+
+        <!--=============== SCROLL REVEAL ===============-->
+        <script src="{% static 'assets/js/scrollreveal.min.js' %}"></script>
+        
+        <!--=============== MAIN JS ===============-->
+        <script src="{% static 'assets/js/main.js' %}"></script>
+    </body>
+</html>

@@ -1,0 +1,181 @@
+{% load static %}
+{% include 'header3.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Disease Prediction</title>
+    <style>
+      
+        .mt-5 {
+            margin-top: 5rem;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        select, input[type="text"], input[type="checkbox"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            float: right;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .results {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+        .results h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <main class="main">
+        <!--==================== HOME ====================-->
+      
+        
+        <!--==================== STEPS ====================-->
+        <section class="steps section container">
+            <div class="steps__bg">
+                <h2 class="section__title-center steps__title">
+                    Steps for<br> plant detection
+                </h2>
+        
+                <div class="steps__container grid">
+                    <div class="steps__card">
+                        <div class="steps__card-number">01</div>
+                        <h3 class="steps__card-title">Capture plant leaf</h3>
+                        <p class="steps__card-description">
+                            Take a clear photo of the plant leaf you want to analyze.
+                        </p>
+                    </div>
+        
+                    <div class="steps__card">
+                        <div class="steps__card-number">02</div>
+                        <h3 class="steps__card-title">Upload picture</h3>
+                        <p class="steps__card-description">
+                            Upload the captured image to our platform for analysis.
+                        </p>
+                    </div>
+        
+                    <div class="steps__card">
+                        <div class="steps__card-number">03</div>
+                        <h3 class="steps__card-title">Analyze picture</h3>
+                        <p class="steps__card-description">
+                            Our system will analyze the uploaded image to detect any issues.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    <div class="container">
+        <h1 class="text-center mb-4">Disease Prediction Form</h1>
+     
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Disease Prediction Form</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_leaf_color">Leaf Color</label>
+            {{ form.leaf_color }}
+        </div>
+        <div class="form-group">
+            <label for="id_leaf_shape">Leaf Shape</label>
+            {{ form.leaf_shape }}
+        </div>
+        <div class="form-group form-check">
+            {{ form.spots_on_leaves }}
+            <label class="form-check-label" for="id_spots_on_leaves">Spots on Leaves</label>
+        </div>
+        <div class="form-group form-check">
+            {{ form.wilting }}
+            <label class="form-check-label" for="id_wilting">Wilting</label>
+        </div>
+        <div class="form-group form-check">
+            {{ form.mold_growth }}
+            <label class="form-check-label" for="id_mold_growth">Mold Growth</label>
+        </div>
+        <div class="form-group">
+            <label for="id_stem_condition">Stem Condition</label>
+            {{ form.stem_condition }}
+        </div>
+        <div class="form-group">
+            <label for="id_soil_type">Soil Type</label>
+            {{ form.soil_type }}
+        </div>
+        <div class="form-group">
+            <label for="id_weather_conditions">Weather Conditions</label>
+            {{ form.weather_conditions }}
+        </div>
+        <div class="form-group">
+            <label for="id_watering_frequency">Watering Frequency</label>
+            {{ form.watering_frequency }}
+        </div>
+        <div class="form-group form-check">
+            {{ form.pest_presence }}
+            <label class="form-check-label" for="id_pest_presence">Pest Presence</label>
+        </div>
+        <div class="form-group">
+            <label for="id_fertilizer_use">Fertilizer Use</label>
+            {{ form.fertilizer_use }}
+        </div>
+        <div class="form-group">
+            <label for="id_crop_type">Crop Type</label>
+            {{ form.crop_type }}
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Predict Disease</button>
+    </form>
+</div>
+        <div id="predictionResults" class="results">
+            <h1>Disease Prediction Results</h1>
+            <div id="diagnosis"></div>
+        </div>
+    </div>
+
+    </main>
+        <!--==================== FOOTER ====================-->
+        <footer class="footer section">
+            <div class="footer__container container grid">
+               
+            </div>
+
+            <p class="footer__copy">&#169; powered by plantvillage dataset</p>
+        </footer>
+        
+        <!--=============== SCROLL UP ===============-->
+        <a href="#" class="scrollup" id="scroll-up"> 
+            <i class="ri-arrow-up-fill scrollup__icon"></i>
+        </a>
+
+        <!--=============== SCROLL REVEAL ===============-->
+        <script src="{% static 'assets/js/scrollreveal.min.js' %}"></script>
+        
+        <!--=============== MAIN JS ===============-->
+        <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+</html>
