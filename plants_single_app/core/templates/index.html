@@ -3,26 +3,40 @@
 
         <main class="main">
             <!--==================== HOME ====================-->
-            <section class="home" id="home">
+            <style>
+                .home::before {
+                  content: "";
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 40%;
+                  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+                  z-index: 1;
+                }
+              
+                .home__container {
+                  position: relative;
+                  z-index: 2;
+                }
+              </style>
+              
+              <section class="home" id="home" style="background-image: url('https://www.farmafrica.org/images/facebook-open-graph/farmer-embu.jpg'); background-repeat: no-repeat; background-size: cover;">
                 <div class="home__container container grid">
-                    
-                
-                    <div class="home__data">
-                        <h1 class="home__title" style="text-transform: lowercase;">
-                            Mwimba plant clinics APP FOR PLANT <br> DISEASES IDENTIFICATION
-
-                        </h1>
-                        <p class="home__description">
-                          diagnosise plants easly with Mwimba plant clinics AI powered plants doctor
-                        </p>
-                        <a href="{% url 'scan' %}" class="button button--flex">
-                           use computer vision to identify desease <i class="ri-arrow-right-down-line button__icon"></i>
-                        </a>
-                    </div>
-
-                    
+                  <div class="home__data">
+                    <h1 class="home__title" style="text-transform: lowercase; color: white;">
+                      Mwimba plant clinics APP FOR PLANT <br> DISEASES IDENTIFICATION
+                    </h1>
+                    <p class="home__description" style="color: white;">
+                      diagnosise plants easily with Mwimba plant clinics AI powered plants doctor
+                    </p>
+                    <a href="{% url 'scan' %}" class="button button--flex">
+                      use computer vision to identify disease <i class="ri-arrow-right-down-line button__icon"></i>
+                    </a>
+                  </div>
                 </div>
-            </section>
+              </section>
+              
 
             <!--==================== ABOUT ====================-->
             <section class="about section container" id="about">
@@ -44,6 +58,117 @@
                 </div>
             </section>
             
+            <!-- <div class="card_c" style="margin-top: 20px;">
+                <a href="">
+                <div class="item item--1">
+                  <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M512 512m-480 0a480 480 0 1 0 960 0 480 480 0 1 0-960 0Z" fill="#E5F1FF"></path><path d="M512 179.2c-96 102.4-262.4 236.8-262.4 384s115.2 262.4 262.4 262.4 262.4-115.2 262.4-262.4-160-281.6-262.4-384z" fill="#9FC8FE"></path><path d="M512 684.8c-57.6 0-102.4-44.8-102.4-108.8 0-57.6 64-102.4 102.4-147.2 38.4 44.8 102.4 89.6 102.4 147.2 0 57.6-44.8 108.8-102.4 108.8z" fill="#72AEFD"></path></g></svg>
+                    <span class="quantity" style="font-size: medium; font-family: Poppins; color: black;"><span id="temperature"></span>irrigation system</span>
+                  <span class="text text--1"> Connected</span>
+                </div>
+                </a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#verticalycentered3">
+                <div class="item item--2">
+                  <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M512 512m-480 0a480 480 0 1 0 960 0 480 480 0 1 0-960 0Z" fill="#FFE5CF"></path><path d="M512 198.4h-6.4c-115.2 6.4-211.2 102.4-211.2 217.6 0 57.6 19.2 108.8 57.6 147.2l12.8 12.8c25.6 32 38.4 38.4 38.4 76.8v19.2h217.6v-19.2c0-38.4 12.8-51.2 38.4-76.8l19.2-19.2c32-38.4 51.2-89.6 51.2-140.8 0-121.6-96-217.6-217.6-217.6" fill="#FF8746"></path><path d="M448 780.8c0 12.8 12.8 19.2 19.2 19.2h89.6c12.8 0 19.2-6.4 19.2-19.2 0-12.8-12.8-19.2-19.2-19.2H467.2c-12.8 0-19.2 6.4-19.2 19.2z" fill="#FF9D68"></path><path d="M512 288c-70.4 0-128 57.6-128 128 0 12.8 12.8 19.2 19.2 19.2s19.2-12.8 19.2-19.2c0-44.8 38.4-89.6 89.6-89.6 12.8 0 19.2-12.8 19.2-19.2s-6.4-19.2-19.2-19.2z" fill="#FFFFFF"></path><path d="M403.2 716.8c0 12.8 12.8 19.2 19.2 19.2h172.8c12.8 0 19.2-6.4 19.2-19.2 0-12.8-12.8-19.2-19.2-19.2H422.4c-6.4 0-19.2 6.4-19.2 19.2z" fill="#FF9D68"></path></g></svg>
+                  <span class="quantity" style="font-size: medium; font-family: Poppins; color: black;"><span id="temperature"></span>Farm Lights</span>
+                  <span class="text text--1"> Connected</span>
+                </div>
+                </a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#verticalycentered">
+                <div class="item item--3">
+                  <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M512 512m-480 0a480 480 0 1 0 960 0 480 480 0 1 0-960 0Z" fill="#DEFCF9"></path><path d="M691.2 441.6L512 179.2c-6.4-6.4-19.2-6.4-25.6 0l-179.2 256c-102.4 147.2-6.4 364.8 172.8 371.2h38.4c179.2-6.4 275.2-217.6 172.8-364.8z" fill="#18DFB7"></path><path d="M608 524.8l-128 160c-6.4 6.4-12.8 0-12.8-6.4l12.8-83.2c0-6.4 0-6.4-6.4-6.4H377.6c-6.4-6.4-6.4-12.8 0-12.8L512 409.6c6.4-6.4 12.8 0 12.8 6.4l-25.6 89.6c0 6.4 6.4 6.4 12.8 6.4h96c6.4 0 6.4 6.4 0 12.8z" fill="#FFFFFF"></path></g></svg>
+      
+                  <span class="quantity" style="font-size: medium; font-family: Poppins; color: black;"><span id="temperature"></span>Incubator</span>
+                  <span class="text text--1"> Connected</span>
+                </div>
+                </a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#verticalycentered4">
+                <div class="item item--4">
+                  <svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M512 512m-480 0a480 480 0 1 0 960 0 480 480 0 1 0-960 0Z" fill="#FEE8EB"></path><path d="M345.6 275.2c0-25.6 19.2-51.2 51.2-51.2h236.8c25.6 0 51.2 19.2 51.2 51.2v454.4c0 25.6-19.2 51.2-51.2 51.2H390.4c-25.6 0-51.2-19.2-51.2-51.2V275.2z" fill="#FF6B6A"></path><path d="M512 371.2m-96 0a96 96 0 1 0 192 0 96 96 0 1 0-192 0Z" fill="#FFB0B0"></path><path d="M512 608m-96 0a96 96 0 1 0 192 0 96 96 0 1 0-192 0Z" fill="#FFB0B0"></path><path d="M486.4 774.4h51.2V896h-51.2z" fill="#FE5A59"></path></g></svg>
+               
+                  <span class="quantity" style="font-size: medium; font-family: Poppins; color: black;"><span id="temperature"></span>Security System</span>
+                  <span class="text text--1"> Connected</span>
+      
+      
+                </div>
+                </a>
+              </div> -->
+                       
+          <style>
+
+
+         
+            .card_c {
+          width: 100%;
+          height: 254px;
+          color: white;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          gap: 5px;
+          overflow: visible;
+        }
+        
+        .card_c .item {
+          border-radius: 10px;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        
+        
+        .item svg {
+          width: 40px;
+          height: 40px;
+          margin-bottom: 7px;
+        }
+        
+        .item--1 {
+          background: #c7c7ff;
+        }
+        
+        .item--2 {
+          background: #ffd8be;
+        }
+        
+        .item--3 {
+          background: #a9ecbf;
+        }
+        
+        .item--4 {
+          background: #f3bbe1;
+        }
+        
+        .quantity {
+          font-size: 25px;
+          font-weight: 600;
+        }
+        
+        .text {
+          font-size: 12px;
+          font-family: inherit;
+          font-weight: 600;
+        }
+        
+        .text--1 {
+          color: rgba(149,149,255,1);
+        }
+        
+        .text--2 {
+          color: rgba(252,161,71,1);
+        }
+        
+        .text--3 {
+          color: rgba(66,193,110,1);
+        }
+        
+        .text--4 {
+          color: rgba(220,91,183,1);
+        }
+            </style>
             <!--==================== STEPS ====================-->
             <section class="steps section container">
                 <div class="steps__bg">

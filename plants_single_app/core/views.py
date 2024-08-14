@@ -13,12 +13,50 @@ def home(request):
 
 
 
+from django.shortcuts import render
+from django.core.files.storage import FileSystemStorage
+from django.utils.datastructures import MultiValueDictKeyError
+
+from django.shortcuts import render
+from django.core.files.storage import FileSystemStorage
+from django.utils.datastructures import MultiValueDictKeyError
+from .dl_model.model import classify_image
+
 def scan(request):
     if request.method == "GET":
- 
-
         return render(request, 'scan.html')
 
+    if request.method == "POST":
+        try:
+            uploaded_file = request.FILES['myfile']
+        except MultiValueDictKeyError:
+            return render(request, 'scan.html', {
+                'error': 'No file was uploaded.'
+            })
+
+        image = uploaded_file.read()
+        result = classify_image(image)
+
+        # Simplify the result display
+        predictions = []
+        for i, (species, status, probability) in enumerate(result[:3]):
+            predictions.append({
+                'rank': i + 1,
+                'species': species,
+                'status': status,
+                'probability': probability,
+                'message': f"This {species} is likely suffering from {status} with a probability of {probability:.2%}."
+            })
+
+        context = {'predictions': predictions}
+
+        # Save the file to ./media
+        fs = FileSystemStorage()
+        filename = fs.save(uploaded_file.name, uploaded_file)
+        uploaded_file_url = fs.url(filename)
+        context['url'] = uploaded_file_url
+
+        return render(request, 'scan.html', context)
 
 from django.shortcuts import render
 from .forms import DiagnosisForm
