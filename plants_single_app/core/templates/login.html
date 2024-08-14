@@ -1,155 +1,217 @@
 {% load static %}
-{% include 'header_x.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="styles.css">
 
-    <title>Login</title>
-    <!-- Add your CSS styling here -->
-    <style>
-        body {
-            font-family: Poppins;
-            background-color: #02070e;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .login-form {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            .box-shadow {
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Horizontal offset, Vertical offset, Blur radius, Spread radius, Color */
-            }
-
-        }
-        .login-form input[type="text"],
-        .login-form input[type="password"],
-        .login-form button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .login-form button {
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-        }
-        .login-form button:hover {
-            background-color: #0056b3;
-        }
-        .loader {
-  width: 85px;
-  height: 85px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: space-between;
-  animation: loading-rotate 3s linear infinite;
-}
-
-.item {
-  width: 40px;
-  height: 40px;
-  display: block;
-  box-sizing: border-box;
-}
-
-.item:nth-of-type(1) {
-  background-color: #50DE68;
-  border-radius: 20px 20px 0 20px;
-  border-left: #ffffff 4px solid;
-  border-top: #f7f7f7 4px solid;
-}
-
-.item:nth-of-type(2) {
-  background-color: rgb(32, 80, 46);
-  border-radius: 20px 20px 20px 0;
-  border-right: #ffffff 4px solid;
-  border-top: #f7f7f7 4px solid;
-}
-
-.item:nth-of-type(3) {
-  background-color: rgb(0, 255, 55);
-  border-radius: 20px 0 20px 20px;
-  border-left: #ffffff 4px solid;
-  border-bottom: #f7f7f7 4px solid;
-}
-
-.item:nth-of-type(4) {
-  background-color: rgb(32, 182, 32);
-  border-radius: 0 20px 20px 20px;
-  border-right: #ffffff 4px solid;
-  border-bottom: #f7f7f7 4px solid;
-}
-
-@keyframes loading-rotate {
-  0% {
-    transform: scale(1) rotate(0);
-  }
-
-  20% {
-    transform: scale(1) rotate(72deg);
-  }
-
-  40% {
-    transform: scale(0.5) rotate(144deg);
-  }
-
-  60% {
-    transform: scale(0.5) rotate(216deg);
-  }
-
-  80% {
-    transform: scale(1) rotate(288deg);
-  }
-
-  100% {
-    transform: scale(1) rotate(360deg);
-  }
-}
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      }
     </style>
 </head>
 <body>
-    <div class="login-form" style="opacity: 80%;">
-        <center>
-        <div class="loader">
-            <span class="item"></span>
-            <span class="item"></span>
-            <span class="item"></span>
-            <span class="item"></span>
-          </div>
-        </center>
-        <br>
-        <h2 style="font-weight: bold;">plant desease predictions </h2>
-        <form method="post">
+   
+
+
+    <div class="login-container" style="background-image: url('');">
+           
+
+        
+        <div class="login-header">
+        
+        </div>
+      
+        <form class="login-form" method="post">
             {% csrf_token %}
+            <center>
+            <!-- <img src="{% static 'troy.png' %}" alt="" style="width: 300px; height: auto;"> -->
+            <span style="font-weight: bold; font-family: Poppins;">Mwimba plant clinic</span>
+            </center>
             {% if messages %}
-                {% for message in messages %}
-                    <div style="color: red;">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
+            {% for message in messages %}
+                <div style="color: red;">{{ message }}</div>
+            {% endfor %}
+             {% endif %}
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="lowetsan username yanu" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="ikani password yanu" required>
+            </div>
+            <div class="input-group">
+                <button type="submit" class="login-button">Log in</button>
+            </div>
         </form>
-        <span>dont have an account?<a href="{% url 'register' %}" style="text-decoration: none;"> register here</a></span>
-        <p style="font-weight: bold; font-size: x-small;">Mwimba plant clinics</p>
+        <div class="login-footer">
+            <a href="#">Forgot Password?</a>
+        </div>
+
+
+        <div class="buttons-container">
+          
+            <div class="google-login-button">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" x="0px" y="0px" class="google-icon" viewBox="0 0 48 48" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12
+        c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24
+        c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path>
+                <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657
+        C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path>
+                <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36
+        c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path>
+                <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571
+        c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
+              </svg>
+              <span>Sign up with Google</span>
+            </div>
+
+            <!-- <div class="apple-login-button">
+               <svg height="40px" width="40px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.001 512.001" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path style="fill:#81C784;" d="M220.051,350.316c0-116.359-48.82-143.719-152.702-143.719 C67.349,318.922,135.993,350.316,220.051,350.316"></path> <path style="fill:#81C784;" d="M318.858,377.263c0-97.801,44.014-116.772,125.754-116.772 C446.148,355.301,403.517,377.263,318.858,377.263"></path> <path style="fill:#81C784;" d="M345.805,0c22.878,70.593-33.603,111.409-77.474,116.772C235.689,68.285,258.226,11.929,345.805,0"></path> <path style="fill:#81C784;" d="M229.033,197.614c-75.228,0-89.825-35.93-89.825-98.807 C212.137,97.621,229.033,132.491,229.033,197.614"></path> <path style="fill:#81C784;" d="M300.893,233.544c81.902,0,116.772-9.324,116.772-116.772 C335.763,116.772,300.893,126.096,300.893,233.544"></path> </g> <path style="fill:#4CAF50;" d="M380.989,319.785c-1.985-4.554-7.285-6.638-11.821-4.653 c-27.675,12.045-44.598,35.292-57.488,56.652c-12.09,12.917-25.295,27.693-37.735,45.586V296.422 c0-12.189,13.483-35.014,33.549-56.787c1.015-1.105,2.425-2.677,4.177-4.626c9.854-11.021,30.361-33.927,48.658-48.29 c3.907-3.063,4.581-8.713,1.527-12.611c-3.072-3.907-8.713-4.581-12.611-1.527c-19.546,15.342-40.762,39.047-50.966,50.445 l-3.988,4.428c-4.114,4.464-12.477,13.977-20.345,25.402V152.775c0.243-32.463,5.857-52.341,21.423-75.974 c2.731-4.141,1.59-9.71-2.551-12.441c-4.15-2.74-9.719-1.59-12.45,2.56c-17.498,26.561-24.109,49.79-24.387,85.711 c0,0.018,0.009,0.027,0.009,0.036c0,0.009-0.009,0.027-0.009,0.036v63.236c-9.054-12.917-18.513-22.582-20.345-24.414l-35.93-38.93 c-3.359-3.638-9.036-3.871-12.692-0.503c-3.647,3.359-3.871,9.045-0.512,12.692l36.181,39.181 c9.261,9.261,33.298,37.475,33.298,56.527v114.113c-8.147-10.213-15.854-17.498-22.16-23.408c-2.569-2.407-4.833-4.545-6.782-6.593 c-24.432-38.014-49.008-62.356-75.102-74.312c-4.5-2.057-9.845-0.099-11.911,4.419c-2.066,4.509-0.09,9.845,4.428,11.911 c23.067,10.572,45.316,32.993,68.024,68.536c0.234,0.35,0.53,0.629,0.799,0.943c0.09,0.117,0.117,0.252,0.225,0.359 c2.255,2.416,4.976,4.967,8.03,7.842c9.414,8.821,22.178,20.884,34.448,42.361v96.355c0,4.958,4.024,8.982,8.982,8.982 s8.982-4.024,8.982-8.982v-51.541c15.558-28.663,34.681-50.167,51.469-68.069c0.099-0.108,0.126-0.243,0.216-0.359 c0.323-0.368,0.665-0.728,0.925-1.159c11.498-19.16,26.39-40.107,49.781-50.284C380.881,329.621,382.965,324.33,380.989,319.785"></path> <path style="fill:#9E5A23;" d="M417.665,512H112.261c-4.958,0-8.982-4.024-8.982-8.982s4.024-8.982,8.982-8.982h305.404 c4.958,0,8.982,4.024,8.982,8.982S422.623,512,417.665,512"></path> </g> </g></svg>
+                <span style="font-weight: bold;">create an account</span>
+              </div> -->
+
+          </div>
+        </div>
     </div>
 </body>
 </html>
+<style>
+
+.buttons-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.apple-login-button,
+    .google-login-button {
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+        rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 11px;
+  gap: 5px;
+}
+
+.apple-login-button {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #000;
+}
+
+.google-login-button {
+  border: 2px solid #747474;
+}
+
+.apple-icon,
+    .google-icon {
+  font-size: 18px;
+  margin-bottom: 1px;
+}
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+
+    margin: 0;
+
+}
+
+.login-container {
+   
+    border-radius: 10px;
+    
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-header h1 {
+    margin: 0;
+    color: #333;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+}
+
+.input-group input {
+    width: 90%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.login-button {
+    background-color: hsl(125, 40%, 36%);
+    color: #ffffff;
+    padding: 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+   
+}
+
+.login-button:hover {
+    background-color: #3700b3;
+}
+
+.login-footer {
+    text-align: center;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+.login-footer a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+</style>
