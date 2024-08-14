@@ -7,37 +7,7 @@
             
             <!--==================== STEPS ====================-->
             <section class="steps section container">
-                <div class="steps__bg">
-                    <h2 class="section__title-center steps__title">
-                        Steps for<br> plant detection
-                    </h2>
-            
-                    <div class="steps__container grid">
-                        <div class="steps__card">
-                            <div class="steps__card-number">01</div>
-                            <h3 class="steps__card-title">Capture plant leaf</h3>
-                            <p class="steps__card-description">
-                                Take a clear photo of the plant leaf you want to analyze.
-                            </p>
-                        </div>
-            
-                        <div class="steps__card">
-                            <div class="steps__card-number">02</div>
-                            <h3 class="steps__card-title">Upload picture</h3>
-                            <p class="steps__card-description">
-                                Upload the captured image to our platform for analysis.
-                            </p>
-                        </div>
-            
-                        <div class="steps__card">
-                            <div class="steps__card-number">03</div>
-                            <h3 class="steps__card-title">Analyze picture</h3>
-                            <p class="steps__card-description">
-                                Our system will analyze the uploaded image to detect any issues.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+               
             </section>
             
 
@@ -60,150 +30,32 @@
                     <head>
                         <meta charset="UTF-8">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>Plant Disease Scanner</title>
-                        <style>
-                            .labelFile {
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                flex-direction: column;
-                                border: 2px dashed #ccc;
-                                padding: 20px;
-                                cursor: pointer;
-                                text-align: center;
-                            }
-                            .labelFile span {
-                                margin-bottom: 10px;
-                            }
-                            .labelFile img {
-                                display: none;
-                                max-width: 100%;
-                                height: auto;
-                            }
-                            .prediction {
-                                background-color: #000000;
-                                padding: 15px;
-                                margin: 15px 0;
-                                border-radius: 5px;
-                                text-align: left;
-                                font-size: 16px;
-                            }
-                            .prediction h3 {
-                                margin: 0 0 10px;
-                            }
-                        </style>
+                        <title>Plant Disease Prediction</title>
                     </head>
                     <body>
+                        <h1>Plant Disease Prediction</h1>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit">Submit</button>
+                        </form>
                     
-                        <section class="product section container" id="products">
-                            <h2 class="section__title-center">
-                                Upload Infected Plant <br> Below
-                            </h2>
-                        
-                            <p class="product__description">
-                                ResNet Trained on PlantVillage Dataset, Upload an image to the Django web service serving the classification model and then predict.
-                            </p>
-                            <center>
-                                <label for="file" class="labelFile" style="margin-top: 10px;">
-                                    <span>
-                                        <svg
-                                            xml:space="preserve"
-                                            viewBox="0 0 184.69 184.69"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            id="Capa_1"
-                                            version="1.1"
-                                            width="60px"
-                                            height="60px">
-                                            <g>
-                                                <g>
-                                                    <g>
-                                                        <path
-                                                            d="M149.968,50.186c-8.017-14.308-23.796-22.515-40.717-19.813
-                                                                C102.609,16.43,88.713,7.576,73.087,7.576c-22.117,0-40.112,17.994-40.112,40.115c0,0.913,0.036,1.854,0.118,2.834
-                                                                C14.004,54.875,0,72.11,0,91.959c0,23.456,19.082,42.535,42.538,42.535h33.623v-7.025H42.538
-                                                                c-19.583,0-35.509-15.929-35.509-35.509c0-17.526,13.084-32.621,30.442-35.105c0.931-0.132,1.768-0.633,2.326-1.392
-                                                                c0.555-0.755,0.795-1.704,0.644-2.63c-0.297-1.904-0.447-3.582-0.447-5.139c0-18.249,14.852-33.094,33.094-33.094
-                                                                c13.703,0,25.789,8.26,30.803,21.04c0.63,1.621,2.351,2.534,4.058,2.14c15.425-3.568,29.919,3.883,36.604,17.168
-                                                                c0.508,1.027,1.503,1.736,2.641,1.897c17.368,2.473,30.481,17.569,30.481,35.112c0,19.58-15.937,35.509-35.52,35.509H97.391
-                                                                v7.025h44.761c23.459,0,42.538-19.079,42.538-42.535C184.69,71.545,169.884,53.901,149.968,50.186z"
-                                                            style="fill:#010002;">
-                                                        </path>
-                                                    </g>
-                                                    <g>
-                                                        <path
-                                                            d="M108.586,90.201c1.406-1.403,1.406-3.672,0-5.075L88.541,65.078
-                                                                c-0.701-0.698-1.614-1.045-2.534-1.045l-0.064,0.011c-0.018,0-0.036-0.011-0.054-0.011c-0.931,0-1.85,0.361-2.534,1.045
-                                                                L63.31,85.127c-1.403,1.403-1.403,3.672,0,5.075c1.403,1.406,3.672,1.406,5.075,0L82.296,76.29v97.227
-                                                                c0,1.99,1.603,3.597,3.593,3.597c1.979,0,3.59-1.607,3.59-3.597V76.165l14.033,14.036
-                                                            C104.91,91.608,107.183,91.608,108.586,90.201z"
-                                                            style="fill:#010002;">
-                                                        </path>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                    </span>
-                                    <p>Drag and drop your file here or click to select a file!</p>
-                                    <img id="preview" src="#" alt="Image Preview" />
-                                </label>
-                                
-                                <input class="input" name="myfile" id="file" type="file" style="display:none;" onchange="handleFileUpload()" />
-                                <button type="button" id="analyzeButton" onclick="analyze()" disabled>Analyze</button>
-                                <div id="label-container"></div>
-                                
-                           
-                        
-                                <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-                                <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-                                <script type="text/javascript">
-                                    const URL = "https://teachablemachine.withgoogle.com/models/KaS-19OqN/";
-                        
-                                    let model, labelContainer, maxPredictions, imgElement;
-                        
-                                    // Load the image model
-                                    async function loadModel() {
-                                        const modelURL = URL + "model.json";
-                                        const metadataURL = URL + "metadata.json";
-                                        model = await tmImage.load(modelURL, metadataURL);
-                                        maxPredictions = model.getTotalClasses();
-                                    }
-                        
-                                    // Handle file upload
-                                    function handleFileUpload() {
-                                        const fileInput = document.getElementById('file');
-                                        const file = fileInput.files[0];
-                                        const reader = new FileReader();
-                        
-                                        reader.onload = function(event) {
-                                            imgElement = document.getElementById('preview');
-                                            imgElement.src = event.target.result;
-                                            imgElement.style.display = 'block';
-                                            document.getElementById("analyzeButton").disabled = false; // Enable the analyze button
-                                        };
-                        
-                                        reader.readAsDataURL(file);
-                                    }
-                        
-                                    // Run the prediction
-                                    async function analyze() {
-                                        if (!model) {
-                                            await loadModel();
-                                        }
-                        
-                                        const prediction = await model.predict(imgElement);
-                                        labelContainer = document.getElementById("label-container");
-                                        labelContainer.innerHTML = "";
-                                        for (let i = 0; i < maxPredictions; i++) {
-                                            const classPrediction =
-                                                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-                                            labelContainer.appendChild(document.createElement("div")).innerHTML = classPrediction;
-                                        }
-                                    }
-                        
-                                    // Load the model on page load
-                                    loadModel();
-                                </script>
+                        {% if predictions %}
+                            <h2>Predictions:</h2>
+                            <ul>
+                                {% for prediction in predictions %}
+                                    <li>{{ prediction.pred }}</li>
+                                {% endfor %}
+                            </ul>
+                            <h3>Description:</h3>
+                            <p>{{ description }}</p>
+                            {% if url %}
+                                <p>Uploaded image: <a href="{{ url }}" target="_blank">{{ url }}</a></p>
+                            {% endif %}
+                        {% endif %}
+                    </body>
+                    </html>
+                    
                             </center>
                         </section>
                         

@@ -146,3 +146,7 @@ class DiseasePredictionForm(forms.Form):
     pest_presence = forms.BooleanField(label='Pest Presence', required=False)
     fertilizer_use = forms.ChoiceField(choices=FERTILIZER_USE, label='Fertilizer Use')
     crop_type = forms.CharField(max_length=100, label='Crop Type')
+
+class PlantDiseaseForm_x(forms.Form):
+    description = forms.CharField(widget=forms.Textarea, required=True, label='Describe the issue with the plant')
+    image = forms.ImageField(required=True, label='Upload an image of the plant')
