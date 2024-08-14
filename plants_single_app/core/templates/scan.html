@@ -31,30 +31,108 @@
                         <meta charset="UTF-8">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                         <title>Plant Disease Prediction</title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                background-color: #f8f9fa;
+                                padding: 20px;
+                            }
+                            .container {
+                                max-width: 600px;
+                                margin: 0 auto;
+                                padding: 20px;
+                                background-color: #fff;
+                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                                border-radius: 5px;
+                            }
+                            h1 {
+                                text-align: center;
+                                color: #333;
+                            }
+                            .form-group {
+                                margin-bottom: 15px;
+                            }
+                            label {
+                                display: block;
+                                margin-bottom: 5px;
+                                color: #333;
+                            }
+                            textarea, input[type="file"], button {
+                                width: 100%;
+                                padding: 10px;
+                                border: 1px solid #ccc;
+                                border-radius: 4px;
+                            }
+                            textarea {
+                                resize: vertical;
+                            }
+                            button {
+                                background-color: #007bff;
+                                color: #fff;
+                                border: none;
+                                cursor: pointer;
+                                font-size: 16px;
+                            }
+                            button:hover {
+                                background-color: #0056b3;
+                            }
+                            .predictions, .description, .uploaded-image {
+                                margin-top: 20px;
+                            }
+                            .predictions ul {
+                                list-style-type: none;
+                                padding: 0;
+                            }
+                            .predictions li {
+                                background-color: #f1f1f1;
+                                margin-bottom: 5px;
+                                padding: 10px;
+                                border-radius: 4px;
+                            }
+                            .uploaded-image a {
+                                color: #007bff;
+                            }
+                        </style>
                     </head>
                     <body>
-                        <h1>Plant Disease Prediction</h1>
-                        <form method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <button type="submit">Submit</button>
-                        </form>
+                        <div class="container">
+                            <h1>Plant Disease Prediction</h1>
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="description">Describe the issue with the plant</label>
+                                    <textarea id="description" name="description" rows="4" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image">Upload an image of the plant</label>
+                                    <input type="file" id="image" name="image" accept="image/*" required>
+                                </div>
+                                <button type="submit">Submit</button>
+                            </form>
                     
-                        {% if predictions %}
-                            <h2>Predictions:</h2>
-                            <ul>
-                                {% for prediction in predictions %}
-                                    <li>{{ prediction.pred }}</li>
-                                {% endfor %}
-                            </ul>
-                            <h3>Description:</h3>
-                            <p>{{ description }}</p>
-                            {% if url %}
-                                <p>Uploaded image: <a href="{{ url }}" target="_blank">{{ url }}</a></p>
+                            {% if predictions %}
+                                <div class="predictions">
+                                    <h2>Predictions:</h2>
+                                    <ul>
+                                        {% for prediction in predictions %}
+                                            <li>{{ prediction.pred }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="description">
+                                    <h3>Description:</h3>
+                                    <p>{{ description }}</p>
+                                </div>
+                                {% if url %}
+                                    <div class="uploaded-image">
+                                        <p>Uploaded image: <a href="{{ url }}" target="_blank">{{ url }}</a></p>
+                                    </div>
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
+                        </div>
                     </body>
                     </html>
+                    
                     
                             </center>
                         </section>
