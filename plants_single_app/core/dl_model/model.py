@@ -1,13 +1,20 @@
 import io
 import json
+import os
 from PIL import Image
 import torch
 from torchvision import models, transforms
 import torch.nn as nn
 from skorch import NeuralNetClassifier
 
+# Get the directory of the current file
+current_dir = os.path.dirname(__file__)
 
-labels = json.load(open('core/dl_model/plant_classes.json'))
+# Construct the absolute path to the json file
+json_path = os.path.join(current_dir, 'plant_classes.json')
+
+# Load labels
+labels = json.load(open(json_path))
 
 class PretrainedModel(nn.Module):
     def __init__(self, output_features):
@@ -21,15 +28,15 @@ class PretrainedModel(nn.Module):
         return self.model(x)
 
 def load_model():
-     """Load Pytorch model."""
-     global model
-     # Load and initialize the model
-     model = NeuralNetClassifier(PretrainedModel, criterion=nn.CrossEntropyLoss, module__output_features=38)
-     model.initialize()
-     # load up the saved model weights
-     model.load_params(f_params='core/dl_model/model_params.pt',
-                       f_optimizer='core/dl_model/model_optimizer.pt',
-                       f_history='core/dl_model/model_history.json')
+    """Load Pytorch model."""
+    global model
+    # Load and initialize the model
+    model = NeuralNetClassifier(PretrainedModel, criterion=nn.CrossEntropyLoss, module__output_features=38)
+    model.initialize()
+    # load up the saved model weights
+    model.load_params(f_params=os.path.join(current_dir, 'model_params.pt'),
+                      f_optimizer=os.path.join(current_dir, 'model_optimizer.pt'),
+                      f_history=os.path.join(current_dir, 'model_history.json'))
 
 # Load trained models
 load_model()
@@ -56,7 +63,7 @@ def classify_image(image_bytes):
     _, indices = torch.sort(outputs, descending=True)
     confidence = torch.nn.functional.softmax(outputs, dim=1)[0]
 
-    # Return the top 3 pedictions ('class label, probability')
+    # Return the top 3 predictions ('class label, probability')
     result = [ (labels[str(idx.item())][0], labels[str(idx.item())][1], confidence[idx].item()) for idx in indices[0][:5] ]
 
     return result
