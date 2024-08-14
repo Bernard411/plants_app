@@ -20,17 +20,21 @@
 
     <div class="login-container" style="background-image: url('');">
            
-
+<style>
+  body{
+    background-color: aliceblue;
+  }
+</style>
         
         <div class="login-header">
-        
+          <span style="font-weight: bold; font-family: Poppins;">Mwimba plant clinic</span>
         </div>
       
         <form class="login-form" method="post">
             {% csrf_token %}
             <center>
-            <!-- <img src="{% static 'troy.png' %}" alt="" style="width: 300px; height: auto;"> -->
-            <span style="font-weight: bold; font-family: Poppins;">Mwimba plant clinic</span>
+            <img src="{% static 'b.png' %}" alt="" style="width: 220px; height: auto;">
+            
             </center>
             {% if messages %}
             {% for message in messages %}
